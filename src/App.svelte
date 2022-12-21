@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Card from "./lib/Card.svelte";
+  import Card from "./lib/Card/index.svelte";
   import Info from "./lib/Info.svelte";
 </script>
 
@@ -15,8 +15,6 @@
     padding: 20px 0;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    // align-items: center;
     margin: auto;
 
     @media (max-width: 700px) {
@@ -24,7 +22,11 @@
     }
 
     @media (max-width: 550px) {
-      width: 95%;
+      width: 400px;
+    }
+
+    @media (max-width: 450px) {
+      width: 300px;
     }
   }
 </style>

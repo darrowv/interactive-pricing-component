@@ -7,10 +7,9 @@ This is a solution to the [Interactive pricing component challenge on Frontend M
 - [Overview](#overview)
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
-  - [Links](#links)
+  - [Link](#link)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
@@ -24,37 +23,25 @@ Users should be able to:
 - See hover states for all interactive elements on the page
 - Use the slider and toggle to see prices for different page view numbers (details provided below)
 
-Here are the different page view ranges and the corresponding monthly price totals:
-
-- 10K pageviews / $8 per month
-- 50K pageviews / $12 per month
-- 100K pageviews / $16 per month
-- 500k pageviews / $24 per month
-- 1M pageviews / $36 per month
-
 ### Screenshot
 
 ![](./screenshot.png)
 
-### Links
+### Link
 
-- You can take a look [here](https://darrowv.github.io/interactive-pricing-component
+- You can take a look [here](https://darrowv.github.io/interactive-pricing-component)
 
 ## My process
 
 ### Built with
 
 - Svelte | SvelteKit
+- Sass/Scss
 - TypeScript
 - Vite
 - Semantic HTML5 markup
-- CSS custom properties
 - Flexbox
 - Media queries
-
-### What I learned
-
-- ***
 
 ### Useful resources
 
