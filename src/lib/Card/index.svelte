@@ -109,5 +109,9 @@
         }
       }
     }
+
+    @media (max-height: 750px) {
+      height: 75%;
+    }
   }
 </style>
