@@ -1,0 +1,44 @@
+@import "./variables.scss";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+html {
+  font-size: 15px;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-image: url("./assets/bg-pattern.svg");
+  background-color: $very-pale-blue;
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: 100% 55%;
+  display: flex;
+  justify-content: center;
+
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
