@@ -10,7 +10,7 @@
 
 <style lang="scss">
   main {
-    width: 550px;
+    width: 600px;
     height: 100%;
     padding: 20px 0;
     display: flex;

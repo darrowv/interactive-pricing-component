@@ -2,38 +2,48 @@
   import { tariffs } from "./tariffs";
   let rangeValue = 3;
   let tariff = tariffs[rangeValue - 1];
-  let {price, views} = tariff;
+  let { price, views } = tariff;
   let yearly = false;
-  $: discount = ((price * 12) / 100 * 25)
-  $: yearlyPrice = (price * 12) - discount;
-
+  $: discount = ((price * 12) / 100) * 25;
+  $: yearlyPrice = price * 12 - discount;
 
   const handleRange = (event) => {
     rangeValue = event.target.value;
     tariff = tariffs[rangeValue - 1];
     price = tariff.price;
     views = tariff.views;
-  }
-
+  };
 </script>
 
 <section>
   <div class="upper">
-    <section class="tariff-info">
+    <div class="tariff-info">
       <p class="views">{views} pageviews</p>
-      <p class="price"><span>${yearly ? yearlyPrice : price}.00</span> / {yearly ? "year" : "month"}</p>
-    </section>
-    <section class="slider">
-      <input type="range" name="range" id="range" bind:value={rangeValue} min="1" max="5" on:input={handleRange}/>
-    </section>
-    <section class="toggle">
+      <p class="price">
+        <span>${yearly ? yearlyPrice : price}.00</span> / {yearly
+          ? "year"
+          : "month"}
+      </p>
+    </div>
+    <div class="slider">
+      <input
+        type="range"
+        name="range"
+        id="range"
+        bind:value={rangeValue}
+        min="1"
+        max="5"
+        on:input={handleRange}
+      />
+    </div>
+    <div class="toggle">
       <p>Monthly Billing</p>
       <label class="toggle-button">
         <input type="checkbox" name="toggle" bind:checked={yearly} />
         <span class="toggle-button-slider" />
       </label>
       <p>Yearly Billing <span>25% discount</span></p>
-    </section>
+    </div>
   </div>
   <div class="bottom">
     <ul class="benefit-list">
@@ -50,7 +60,9 @@
 
   section {
     background-color: white;
+    color: $greyish-blue-text;
     border-radius: 10px;
+    box-shadow: 0px 0px 15px 0px $light-greyish-blue-toggle;
     height: 60%;
     margin-top: 1rem;
     display: flex;
@@ -66,14 +78,18 @@
       justify-content: space-between;
 
       .tariff-info {
+        display: flex;
         flex-direction: row;
         justify-content: space-between;
       }
 
       // .slider {
+      //   display: flex;
+      //   width: 100%;
       // }
 
       .toggle {
+        display: flex;
         flex-direction: row;
         justify-content: flex-end;
 
@@ -115,14 +131,33 @@
 
       display: flex;
       justify-content: space-between;
+      align-items: center;
 
       ul {
         list-style-type: none;
         padding: 0;
 
+        li {
+          margin-top: .5rem;
+        }
+
         li::before {
           content: url("../assets/icon-check.svg");
           margin-right: 1rem;
+        }
+      }
+
+      button {
+        border: none;
+        border-radius: 30px;
+        background-color: $dark-desaturated-blue;
+        color: $pale-blue;
+        width: 40%;
+        padding: .85rem;
+        cursor: pointer;
+
+        &:hover, &:focus {
+          color: white;
         }
       }
     }
