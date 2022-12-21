@@ -1,18 +1,16 @@
 <script lang="ts">
   import Card from "./lib/Card.svelte";
-import Info from "./lib/Info.svelte";
-
-
+  import Info from "./lib/Info.svelte";
 </script>
 
 <main>
-  <Info/>
-  <Card/>
+  <Info />
+  <Card />
 </main>
 
 <style lang="scss">
   main {
-    width: 600px;
+    width: 550px;
     height: 100%;
     padding: 20px 0;
     display: flex;

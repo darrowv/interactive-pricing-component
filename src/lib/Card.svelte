@@ -1,19 +1,35 @@
 <script lang="ts">
+  import { tariffs } from "./tariffs";
+  let rangeValue = 3;
+  let tariff = tariffs[rangeValue - 1];
+  let {price, views} = tariff;
+  let yearly = false;
+  $: discount = ((price * 12) / 100 * 25)
+  $: yearlyPrice = (price * 12) - discount;
+
+
+  const handleRange = (event) => {
+    rangeValue = event.target.value;
+    tariff = tariffs[rangeValue - 1];
+    price = tariff.price;
+    views = tariff.views;
+  }
+
 </script>
 
 <section>
   <div class="upper">
     <section class="tariff-info">
-      <p class="views">100k pageviews</p>
-      <p class="price"><span>$16.00</span> / month</p>
+      <p class="views">{views} pageviews</p>
+      <p class="price"><span>${yearly ? yearlyPrice : price}.00</span> / {yearly ? "year" : "month"}</p>
     </section>
     <section class="slider">
-      <input type="range" name="range" id="range" />
+      <input type="range" name="range" id="range" bind:value={rangeValue} min="1" max="5" on:input={handleRange}/>
     </section>
     <section class="toggle">
       <p>Monthly Billing</p>
       <label class="toggle-button">
-        <input type="checkbox" name="toggle" />
+        <input type="checkbox" name="toggle" bind:checked={yearly} />
         <span class="toggle-button-slider" />
       </label>
       <p>Yearly Billing <span>25% discount</span></p>
@@ -36,13 +52,14 @@
     background-color: white;
     border-radius: 10px;
     height: 60%;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
 
     .upper {
       height: 65%;
-      border: 3px dashed red;
       padding: 2rem 3rem;
+      border-bottom: 2px solid $light-greyish-blue-slider;
 
       display: flex;
       flex-direction: column;
@@ -53,8 +70,8 @@
         justify-content: space-between;
       }
 
-      .slider {
-      }
+      // .slider {
+      // }
 
       .toggle {
         flex-direction: row;
@@ -94,7 +111,6 @@
 
     .bottom {
       height: 35%;
-      border: 3px dashed blue;
       padding: 2rem 3rem;
 
       display: flex;
@@ -109,8 +125,6 @@
           margin-right: 1rem;
         }
       }
-
-      
     }
   }
 </style>
