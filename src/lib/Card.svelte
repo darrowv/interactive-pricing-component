@@ -8,28 +8,33 @@
   $: yearlyPrice = price * 12 - discount;
 
   const handleRange = (event) => {
+    const target = event.target;
     rangeValue = event.target.value;
     tariff = tariffs[rangeValue - 1];
     price = tariff.price;
     views = tariff.views;
+
+    const min = target.min;
+    const max = target.max;
+    const val = target.value;
+
+    target.style.backgroundSize = ((val - min) * 100) / (max - min) + "% 100%";
   };
 </script>
 
 <section>
   <div class="upper">
     <div class="tariff-info">
-      <p class="views">{views} pageviews</p>
-      <p class="price">
-        <span>${yearly ? yearlyPrice : price}.00</span> / {yearly
-          ? "year"
-          : "month"}
-      </p>
+      <p class="views">{views} PAGEVIEWS</p>
+      <div class="price">
+        <p class="money">${yearly ? yearlyPrice : price}.00</p>
+        <p class="duration">/ {yearly ? "year" : "month"}</p>
+      </div>
     </div>
     <div class="slider">
       <input
         type="range"
         name="range"
-        id="range"
         bind:value={rangeValue}
         min="1"
         max="5"
@@ -42,7 +47,7 @@
         <input type="checkbox" name="toggle" bind:checked={yearly} />
         <span class="toggle-button-slider" />
       </label>
-      <p>Yearly Billing <span>25% discount</span></p>
+      <p>Yearly Billing <span class="discount-message">25% discount</span></p>
     </div>
   </div>
   <div class="bottom">
@@ -81,25 +86,104 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
+
+        .views {
+          letter-spacing: 0.1rem;
+          font-weight: $bold-font;
+        }
+
+        .price {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+
+          p {
+            font-weight: $bold-font;
+          }
+        }
+
+        .money {
+          font-size: 2.5rem;
+          color: $dark-desaturated-blue;
+        }
       }
 
-      // .slider {
-      //   display: flex;
-      //   width: 100%;
-      // }
+      .slider {
+        input {
+          -webkit-appearance: none;
+          width: 100%;
+          height: 10px;
+          background-image: linear-gradient($soft-cyan, $soft-cyan);
+          background-color: $light-greyish-blue-slider;
+          background-size: 50% 100%;
+          background-repeat: no-repeat;
+          border-radius: 5px;
+
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+          }
+
+          &:focus {
+            outline: 2px solid $strong-cyan;
+          }
+
+          &::-ms-track {
+            width: 100%;
+            cursor: pointer;
+            background: transparent;
+            border-color: transparent;
+            color: transparent;
+          }
+
+          &::-moz-range-thumb {
+            box-shadow: 0px 0px 31px 0px $strong-cyan;
+            border: none;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-image: url("../assets/icon-slider.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: $strong-cyan;
+            cursor: pointer;
+
+            &:hover {
+              filter: brightness(1.1);
+            }
+
+            &:active {
+              filter: brightness(0.8);
+            }
+          }
+        }
+      }
 
       .toggle {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
+        margin-right: 1rem;
+
+        .discount-message {
+          font-size: .75rem;
+          font-weight: $bold-font;
+          margin-left: .5rem;
+          color: $light-red;
+          background-color: $light-greyish-red;
+          padding: .2rem 0.35rem;
+          border-radius: 0.75rem;
+
+        }
 
         .toggle-button {
           position: relative;
           display: inline-block;
-          width: 60px;
-          height: 34px;
-          border-radius: 20px;
-          background: rgba(204, 204, 204, 0.821);
+          margin: 0 1rem;
+          width: 45px;
+          height: 23px;
+          border-radius: 23px;
+          background: $light-greyish-blue-toggle;
           cursor: pointer;
           transition: all 0.2s ease-in-out;
         }
@@ -111,23 +195,23 @@
         .toggle-button-slider {
           position: absolute;
           top: 2px;
-          left: 2px;
-          width: 30px;
-          height: 30px;
+          left: 3px;
+          width: 18px;
+          height: 18px;
           background: #fff;
           border-radius: 50%;
           transition: all 0.2s ease-in-out;
         }
 
         .toggle-button input[type="checkbox"]:checked + .toggle-button-slider {
-          left: calc(50% - 2px);
+          left: calc(50%);
         }
       }
     }
 
     .bottom {
       height: 35%;
-      padding: 2rem 3rem;
+      padding: 0 3rem;
 
       display: flex;
       justify-content: space-between;
@@ -138,7 +222,7 @@
         padding: 0;
 
         li {
-          margin-top: .5rem;
+          margin-top: 0.5rem;
         }
 
         li::before {
@@ -153,10 +237,11 @@
         background-color: $dark-desaturated-blue;
         color: $pale-blue;
         width: 40%;
-        padding: .85rem;
+        padding: 0.85rem;
         cursor: pointer;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           color: white;
         }
       }
