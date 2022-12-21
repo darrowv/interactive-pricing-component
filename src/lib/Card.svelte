@@ -23,7 +23,7 @@
 </script>
 
 <section>
-  <div class="upper">
+  <div class="top">
     <div class="tariff-info">
       <p class="views">{views} PAGEVIEWS</p>
       <div class="price">
@@ -42,12 +42,16 @@
       />
     </div>
     <div class="toggle">
-      <p>Monthly Billing</p>
+      <p>Monthly</p>
       <label class="toggle-button">
         <input type="checkbox" name="toggle" bind:checked={yearly} />
         <span class="toggle-button-slider" />
       </label>
-      <p>Yearly Billing <span class="discount-message">25% discount</span></p>
+      <p>
+        Yearly <span class="discount-message">25% discount</span><span
+          class="short-discount-message">-25%</span
+        >
+      </p>
     </div>
   </div>
   <div class="bottom">
@@ -73,7 +77,7 @@
     display: flex;
     flex-direction: column;
 
-    .upper {
+    .top {
       height: 65%;
       padding: 2rem 3rem;
       border-bottom: 2px solid $light-greyish-blue-slider;
@@ -120,10 +124,6 @@
           background-repeat: no-repeat;
           border-radius: 5px;
 
-          &::-webkit-slider-thumb {
-            -webkit-appearance: none;
-          }
-
           &:focus {
             outline: 2px solid $strong-cyan;
           }
@@ -134,6 +134,28 @@
             background: transparent;
             border-color: transparent;
             color: transparent;
+          }
+
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            box-shadow: 0px 0px 31px 0px $strong-cyan;
+            border: none;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-image: url("../assets/icon-slider.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: $strong-cyan;
+            cursor: pointer;
+
+            &:hover {
+              filter: brightness(1.1);
+            }
+
+            &:active {
+              filter: brightness(0.8);
+            }
           }
 
           &::-moz-range-thumb {
@@ -162,34 +184,41 @@
       .toggle {
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: center;
         margin-right: 1rem;
 
+        .short-discount-message {
+          display: none;
+        }
+
         .discount-message {
-          font-size: .75rem;
+          font-size: 0.75rem;
           font-weight: $bold-font;
-          margin-left: .5rem;
+          margin-left: 0.5rem;
           color: $light-red;
           background-color: $light-greyish-red;
-          padding: .2rem 0.35rem;
+          padding: 0.2rem 0.35rem;
           border-radius: 0.75rem;
-
         }
 
         .toggle-button {
           position: relative;
           display: inline-block;
           margin: 0 1rem;
-          width: 45px;
+          width: 43px;
           height: 23px;
           border-radius: 23px;
           background: $light-greyish-blue-toggle;
           cursor: pointer;
           transition: all 0.2s ease-in-out;
+
+          &:hover {
+            background-color: $strong-cyan;
+          }
         }
 
         .toggle-button input[type="checkbox"] {
-          display: none;
+          opacity: 0;
         }
 
         .toggle-button-slider {
@@ -198,7 +227,7 @@
           left: 3px;
           width: 18px;
           height: 18px;
-          background: #fff;
+          background: white;
           border-radius: 50%;
           transition: all 0.2s ease-in-out;
         }
@@ -243,6 +272,50 @@
         &:hover,
         &:focus {
           color: white;
+        }
+      }
+    }
+
+    @media (max-width: 550px) {
+      .top {
+        height: 60%;
+
+        .tariff-info {
+          padding-top: 2rem;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .toggle {
+          margin: 0;
+
+          .discount-message {
+            display: none;
+          }
+
+          .short-discount-message {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: $bold-font;
+            color: $light-red;
+            background-color: $light-greyish-red;
+            padding: 0.2rem 0.35rem;
+            border-radius: 0.75rem;
+          }
+        }
+      }
+
+      .bottom {
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        text-align: center;
+        height: 40%;
+        padding-bottom: 3rem;
+        padding-top: 1.75rem;
+
+        button {
+          width: 50%;
         }
       }
     }

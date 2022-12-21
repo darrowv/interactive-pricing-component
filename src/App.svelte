@@ -16,5 +16,15 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    // align-items: center;
+    margin: auto;
+
+    @media (max-width: 700px) {
+      width: 500px;
+    }
+
+    @media (max-width: 550px) {
+      width: 95%;
+    }
   }
 </style>

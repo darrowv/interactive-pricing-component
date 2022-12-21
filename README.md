@@ -59,7 +59,7 @@ Here are the different page view ranges and the corresponding monthly price tota
 ### Useful resources
 
 - [Svelte Tutorial](https://learn.svelte.dev/tutorial/welcome-to-svelte)
-- [********\*\*\*\*********](*********************************************)
+- [Input range styling](https://brennaobrien.com/blog/2014/05/style-input-type-range-in-every-browser.html)
 
 ## Author
 

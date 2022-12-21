@@ -15,6 +15,10 @@ html, body {
 html {
   font-size: 15px;
   font-family: "Manrope", sans-serif;
+
+  @media (max-width: 550px) {
+    font-size: 13px;
+  }
 }
 
 body {

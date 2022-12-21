@@ -16,6 +16,7 @@
     justify-content: center;
     gap: .5rem;
     height: 30%;
+    text-align: center;
   }
 
   h1 {
