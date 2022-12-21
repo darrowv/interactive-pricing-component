@@ -1,7 +1,7 @@
 <script lang="ts">
   import { yearly } from "../../stores";
-  import Slider from "./Slider.svelte";
   import { tariffs } from "../tariffs";
+  import Slider from "./Slider.svelte";
   import Toggle from "./Toggle.svelte";
   import Bottom from "./Bottom.svelte";
   let rangeValue = 3;
@@ -108,10 +108,11 @@
           gap: 1.5rem;
         }
       }
+
+      @media (max-height: 750px) {
+        height: 75%;
+      }
     }
 
-    @media (max-height: 750px) {
-      height: 75%;
-    }
   }
 </style>
