@@ -15,8 +15,8 @@
     align-items: center;
     justify-content: center;
     gap: .5rem;
-    height: 30%;
     text-align: center;
+    padding: 3rem;
   }
 
   h1 {

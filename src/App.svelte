@@ -13,8 +13,6 @@
     width: 600px;
     height: 100%;
     padding: 20px 0;
-    display: flex;
-    flex-direction: column;
     margin: auto;
 
     @media (max-width: 700px) {

@@ -12,8 +12,7 @@
 
   .bottom {
       height: 35%;
-      padding: 0 3rem;
-
+      padding: 2rem 3.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;

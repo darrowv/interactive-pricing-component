@@ -56,19 +56,19 @@
     color: $greyish-blue-text;
     border-radius: 10px;
     box-shadow: 0px 0px 15px 0px $light-greyish-blue-toggle;
-    height: 60%;
+    // height: 60%;
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
 
     .top {
       height: 65%;
-      padding: 2rem 3rem;
+      padding: 3rem 3rem;
       border-bottom: 2px solid $light-greyish-blue-slider;
-
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 4rem;
 
       .tariff-info {
         display: flex;
